@@ -52,6 +52,7 @@ const ContactForm = ({ onSubmit }) => {
         </Label>
 
         <button type="submit">Add contact</button>
+        <button type="submit">Clear</button>
       </Forma>
     </Formik>
   );
