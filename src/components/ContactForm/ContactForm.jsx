@@ -1,17 +1,20 @@
 import { Forma, Label, Text } from './ContactForm.styles';
-import PropTypes from 'prop-types';
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/contactSlice';
+import { nanoid } from 'nanoid';
+import { Report } from 'notiflix/build/notiflix-report-aio';
 
 const schema = yup.object().shape({
   name: yup.string().required(),
   number: yup.number().positive().required(),
 });
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
-    onSubmit(values);
+    dispatch(addContact({ ...values, id: nanoid() }));
     resetForm();
   };
 
@@ -56,10 +59,6 @@ const ContactForm = ({ onSubmit }) => {
       </Forma>
     </Formik>
   );
-};
-
-ContactForm.prototype = {
-  onSubmit: PropTypes.func.isRequired,
 };
 
 export default ContactForm;
