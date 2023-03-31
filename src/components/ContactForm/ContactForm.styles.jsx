@@ -5,6 +5,10 @@ export const Forma = styled(Form)`
   margin-bottom: 30px;
 `;
 
+export const Buttons = styled.button`
+  margin-right: 15px;
+`;
+
 export const Label = styled.label`
   display: flex;
   flex-direction: column;

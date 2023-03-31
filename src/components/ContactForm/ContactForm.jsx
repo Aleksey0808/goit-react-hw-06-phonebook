@@ -1,8 +1,8 @@
-import { Forma, Label, Text } from './ContactForm.styles';
+import { Forma, Label, Text,Buttons } from './ContactForm.styles';
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/contactSlice';
+import { addContact, clearContact } from 'redux/contactSlice';
 import { nanoid } from 'nanoid';
 
 
@@ -17,6 +17,10 @@ const ContactForm = () => {
     dispatch(addContact({ ...values, id: nanoid() }));
     resetForm();
   };
+
+  const clearSubmit = () => {
+    dispatch(clearContact());
+  }
 
   const initialValues = {
     name: '',
@@ -53,9 +57,11 @@ const ContactForm = () => {
           />
           <ErrorMessage name="number" component="div" />
         </Label>
-
-        <button type="submit">Add contact</button>
-        <button type="submit">Clear</button>
+ 
+        <Buttons type="submit">Add contact</Buttons>
+        <Buttons onClick={clearSubmit} type="button">Clear</Buttons>
+      
+        
       </Forma>
     </Formik>
   );
