@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contactSlice';
 import { nanoid } from 'nanoid';
-// import { Report } from 'notiflix/build/notiflix-report-aio';
+
 
 const schema = yup.object().shape({
   name: yup.string().required(),

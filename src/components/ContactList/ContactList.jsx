@@ -7,8 +7,8 @@ function ContactList() {
   const dispatch = useDispatch();
   const contacts = useSelector(state => {
     return state.contacts.items.filter(
-      item => console.log(state.filter)
-      // item.name.toLowerCase().trim().includes(state.filter.toLowerCase().trim())
+      item => item.name.toLowerCase().trim().includes(state.filter.toLowerCase().trim())
+      
     );
   });
 
